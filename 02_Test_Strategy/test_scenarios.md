@@ -27,6 +27,6 @@
 - [ ] **6. Capacity Test**
   * **Load:** Continuous scale-up
   * **Objective:** Increase traffic until the maximum capability is reached. Testing stops if:
-    * ⚠️ An SLA is breached
-    * ⚠️ Error rate exceeds 1%
-    * ⚠️ Response times become unacceptable
+    *  An SLA is breached
+    *  Error rate exceeds 1%
+    *  Response times become unacceptable
