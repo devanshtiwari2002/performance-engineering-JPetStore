@@ -1,20 +1,10 @@
-Window 11
+###  Test Execution Environment
 
-Java 21
-
-JMeter 5.6.3
-
-Browser
-Chrome
-
-Internet Speed
-40Mbps
-
-Site
-JPetStore Demo 
-
-Execution Machine 
-HP Victus 16 
-
-CPU
-Rayzen 7
+* **Operating System:** Windows 11
+* **Java Version:** Java 21
+* **Testing Tool:** Apache JMeter 5.6.3
+* **Target Browser:** Google Chrome
+* **Network Speed:** 40 Mbps (Internet Connection)
+* **Target Application:** JPetStore Demo
+* **Execution Hardware:** HP Victus 16
+  * **Processor:** AMD Ryzen 7 CPU
