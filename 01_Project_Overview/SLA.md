@@ -1,11 +1,13 @@
-Since this is a demo Application , these are assumed values
----------------------------------
-Metrics          | Traget
-Average Response | <2sec
-P95              | <3sec
-Error Rate       | <1%
-Availability     | >99%
-CPU              | <75%
-Memory           | stable
-Throughput       | Highest sustainable throughput
---------------------------------
+###  Assumed Performance Targets (KPIs / SLAs)
+
+>  **Note:** As this is a testing simulation on a demo application, the following values are baseline assumptions defined for success criteria.
+
+| Metric | Target Threshold |
+| :--- | :--- |
+| **Average Response Time** | `< 2 sec` |
+| **95th Percentile (P95)** | `< 3 sec` |
+| **Error Rate** | `< 1%` |
+| **Availability** | `> 99%` |
+| **CPU Utilization** | `< 75%` |
+| **Memory Consumption** | Stable (No leaks/growth over time) |
+| **Throughput** | Highest sustainable throughput |
