@@ -1,43 +1,53 @@
-##  JMeter Scripted User Actions & Transaction Scenarios
+# 🚀 Performance Testing Strategy & Test Plan: JPetStore Demo
+
+This repository contains the comprehensive performance testing strategy, environment configurations, API specifications, and transaction mappings for the **JPetStore Demo** application.
+
 ---
 
-###  1. Home Module (Navigational Entry)
-This scenario establishes the initial session state and models entry-level user engagement.
-* **Open Home Page:** Initial HTTP landing request to establish server connection and receive a fresh `JSESSIONID` cookie.
-* **View Categories:** Navigation to the primary store entry page where the main animal category groups are rendered.
+## 📋 Table of Contents
+1. [Introduction](#-introduction)
+2. [Business Objective & User Journeys](#-business-objective--user-journeys)
+3. [Test Execution Environment](#-test-execution-environment)
+4. [Assumed Performance Targets (SLAs)](#-assumed-performance-targets-slas)
+5. [Performance Testing Scenarios](#-performance-testing-scenarios)
+6. [System Architecture & Request Mechanics](#-system-architecture--request-mechanics)
+7. [API & Endpoint Directory](#-api--endpoint-directory)
+8. [JMeter Scripted User Actions](#-jmeter-scripted-user-actions)
 
-###  2. Catalog Module (Discovery & Browsing)
-Models how search engine-driven or high-intent window shoppers interact with the database.
-* **Browse Categories:** Drill down into a specific main category *(e.g., Cats, Dogs, Fish)*.
-* **View Products:** Access a product list within a category *(e.g., Golden Retriever, Bulldog under Dogs)*.
-* **View Item Details:** Drill down to a specific SKU variant level *(e.g., Male Adult Bulldog vs. Female Puppy)*.
+---
 
-###  3. Search Module (Direct Intent)
-Simulates active searching where users target specific products directly, bypassing hierarchical menus.
-* **Search Products:** Execute a keyword lookup query against the catalog database.
-* **View Search Results:** Render the matches returned by the search algorithm.
-* **Open Product:** Drill down into a parent product category from the search results index.
-* **Open Item:** Select a specific SKU variant from the search matches.
+## 🏢 Introduction
+This project documents the performance testing strategy, configuration, and execution guidelines for **JPetStore**, a web-based e-commerce application designed to simulate real-world pet retail operations. 
 
-###  4. User Account Module (Identity & Session State)
-Validates authenticated workflows, secure state mutations, and user profiles.
-* **Register:** Create a new customer profile record in the backend database.
-* **Login:** Authenticate an existing account, upgrading the current session state.
-* **Logout:** Clear credentials and terminate the authenticated session state.
-* **Update Profile:** Modify account details *(e.g., change billing address or language preference)*.
+### What is JPetStore?
+JPetStore is a classic, multi-tier demo application built to showcase web application architectures. It simulates a fully functional retail storefront where users browse animals, manage shopping carts, and place orders. 
 
-###  5. Shopping Cart Module (Cart State Management)
-Models highly dynamic, session-based state interactions within the user's active session memory.
-* **Add Item:** Push an item SKU into the shopping cart, updating cart totals dynamically.
-* **Remove Item:** Delete an item SKU from the active cart.
-* **Update Quantity:** Change unit counts, forcing recalculations of subtotals.
-* **Empty Cart:** Clear all items from the active shopping cart session.
-* **View Cart:** Render the current state of the shopping cart layout.
+### Why Performance Matters
+Even for a demo or simulation, evaluating performance baseline metrics is vital. Minor delays in modern e-commerce architectures directly impact user retention. This testing strategy ensures the application remains highly responsive, stable under load variations, and structurally efficient over prolonged execution windows.
 
-###  6. Checkout Module (Transactional Process)
-The highest-risk database execution pathway. Handles end-to-end checkout and payment creation.
-* **Proceed to Checkout:** Initiate checkout transition, forcing a security check to ensure the user is logged in.
-* **Shipping Address:** Configure, input, or confirm physical shipping coordinates.
-* **Payment Information:** Input mock credit card details and confirm billing profiles.
-* **Confirm Order:** Present a final invoice summary screen for visual validation.
-* **Place Order:** Commit the transaction to the database, creating an official order record and adjusting inventory stock levels.
+---
+
+## 🎯 Business Objective & User Journeys
+The primary business purpose of this testing initiative is to stress-test the application infrastructure to uncover architectural bottlenecks, predict scaling costs, and guarantee a seamless consumer experience.
+
+### Revenue Model
+* **Direct Online E-Commerce:** Driving digital pet, food, and accessory sales.
+* **Conversion-Driven Retention:** Ensuring that page rendering and transaction speeds directly protect checkout completion rates, minimizing abandoned shopping carts.
+
+### Target Users
+The system is architected to handle distinct user demographics interacting with the storefront concurrently:
+* **Anonymous Shoppers:** Browsing inventory, filtering categories, and exploring product lines without authenticating.
+* **Registered Customers:** Active buyers managing profiles, configuring persistent shopping carts, and executing checkout payments.
+
+### Critical User Journey Flow
+The load testing scripts specifically mimic the exact clickstream path of a high-intent buyer:
+
+```mermaid
+graph LR
+    A[Home Page] --> B[Register / Sign In]
+    B --> C[Select Category]
+    C --> D[View Sub-Category Product]
+    D --> E[Add to Cart]
+    E --> F[Review Shopping Cart]
+    F --> G[Enter Payment Details]
+    G --> H[Order Confirmation]
