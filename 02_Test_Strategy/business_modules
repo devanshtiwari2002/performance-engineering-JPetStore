@@ -1,0 +1,43 @@
+##  JMeter Scripted User Actions & Transaction Scenarios
+---
+
+###  1. Home Module (Navigational Entry)
+This scenario establishes the initial session state and models entry-level user engagement.
+* **Open Home Page:** Initial HTTP landing request to establish server connection and receive a fresh `JSESSIONID` cookie.
+* **View Categories:** Navigation to the primary store entry page where the main animal category groups are rendered.
+
+###  2. Catalog Module (Discovery & Browsing)
+Models how search engine-driven or high-intent window shoppers interact with the database.
+* **Browse Categories:** Drill down into a specific main category *(e.g., Cats, Dogs, Fish)*.
+* **View Products:** Access a product list within a category *(e.g., Golden Retriever, Bulldog under Dogs)*.
+* **View Item Details:** Drill down to a specific SKU variant level *(e.g., Male Adult Bulldog vs. Female Puppy)*.
+
+###  3. Search Module (Direct Intent)
+Simulates active searching where users target specific products directly, bypassing hierarchical menus.
+* **Search Products:** Execute a keyword lookup query against the catalog database.
+* **View Search Results:** Render the matches returned by the search algorithm.
+* **Open Product:** Drill down into a parent product category from the search results index.
+* **Open Item:** Select a specific SKU variant from the search matches.
+
+###  4. User Account Module (Identity & Session State)
+Validates authenticated workflows, secure state mutations, and user profiles.
+* **Register:** Create a new customer profile record in the backend database.
+* **Login:** Authenticate an existing account, upgrading the current session state.
+* **Logout:** Clear credentials and terminate the authenticated session state.
+* **Update Profile:** Modify account details *(e.g., change billing address or language preference)*.
+
+###  5. Shopping Cart Module (Cart State Management)
+Models highly dynamic, session-based state interactions within the user's active session memory.
+* **Add Item:** Push an item SKU into the shopping cart, updating cart totals dynamically.
+* **Remove Item:** Delete an item SKU from the active cart.
+* **Update Quantity:** Change unit counts, forcing recalculations of subtotals.
+* **Empty Cart:** Clear all items from the active shopping cart session.
+* **View Cart:** Render the current state of the shopping cart layout.
+
+###  6. Checkout Module (Transactional Process)
+The highest-risk database execution pathway. Handles end-to-end checkout and payment creation.
+* **Proceed to Checkout:** Initiate checkout transition, forcing a security check to ensure the user is logged in.
+* **Shipping Address:** Configure, input, or confirm physical shipping coordinates.
+* **Payment Information:** Input mock credit card details and confirm billing profiles.
+* **Confirm Order:** Present a final invoice summary screen for visual validation.
+* **Place Order:** Commit the transaction to the database, creating an official order record and adjusting inventory stock levels.
